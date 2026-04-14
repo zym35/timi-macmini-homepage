@@ -1,0 +1,11 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    network_mode: host  # required to see host network interfaces (enp3s0f0) in the resources widget
+    volumes:
+      - ./config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro  # lets Homepage auto-detect other containers
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: "*"  # fine for Tailscale-only access
+    restart: unless-stopped

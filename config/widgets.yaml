@@ -1,0 +1,18 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/info-widgets/
+
+- resources:
+    label: System
+    cpu: true
+    memory: true
+    disk: /
+    cputemp: true
+    uptime: true
+    expanded: true
+
+- resources:
+    label: Network
+    network: enp3s0f0
+    expanded: true
+
