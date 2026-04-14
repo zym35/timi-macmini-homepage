@@ -1,0 +1,387 @@
+/* ============================================================
+   Anthropic / Claude Design System — Homepage Dashboard
+   Warm, editorial, literary aesthetic
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@400;500&display=swap');
+
+/* --- Design Tokens (Anthropic dark palette) --- */
+:root {
+  --c-black:     #141413;          /* Near Black — page background     */
+  --c-surface:   #30302e;          /* Dark Surface — cards, nav         */
+  --c-surface-2: #252523;          /* Hover surface                     */
+  --c-ivory:     #faf9f5;          /* Primary text on dark              */
+  --c-silver:    #b0aea5;          /* Secondary text on dark            */
+  --c-stone:     #87867f;          /* Tertiary / labels                 */
+  --c-charcoal:  #3d3d3a;          /* Subtle text, borders              */
+  --c-terra:     #c96442;          /* Terracotta — primary accent / CTA */
+  --c-coral:     #d97757;          /* Coral — hover accent              */
+  --c-border:    #30302e;          /* Card / nav border                 */
+  --c-border-2:  #3d3d3a;          /* Dividers, input borders           */
+  --c-ring:      rgba(201,100,66,0.35); /* Focus ring glow              */
+  --font-serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:   'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--c-black) !important;
+  color: var(--c-ivory) !important;
+  font-family: var(--font-sans) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   BACKGROUND OVERRIDES (slate → warm dark)
+   ============================================================ */
+
+.bg-slate-900,
+.dark\:bg-slate-900,
+.bg-stone-900,
+.dark\:bg-stone-900,
+.bg-zinc-900,
+.dark\:bg-zinc-900 {
+  background-color: var(--c-black) !important;
+}
+
+.bg-slate-800,
+.dark\:bg-slate-800,
+.bg-stone-800,
+.dark\:bg-stone-800 {
+  background-color: var(--c-surface) !important;
+}
+
+.bg-slate-800\/30,
+.bg-slate-800\/50,
+.dark\:bg-slate-800\/30,
+.dark\:bg-slate-800\/50 {
+  background-color: rgba(48,48,46,0.5) !important;
+}
+
+.bg-white\/10,
+.dark\:bg-white\/10,
+.bg-white\/5,
+.dark\:bg-white\/5 {
+  background-color: rgba(48,48,46,0.8) !important;
+}
+
+.bg-black\/20,
+.bg-black\/10,
+.dark\:bg-black\/20 {
+  background-color: var(--c-surface) !important;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+/* Site title — serif, editorial */
+h1,
+#page_title,
+[class*="text-3xl"].font-bold,
+[class*="text-4xl"] {
+  font-family: var(--font-serif) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--c-ivory) !important;
+  line-height: 1.10 !important;
+}
+
+/* Section / group headings */
+h2, h3, h4 {
+  font-family: var(--font-serif) !important;
+  font-weight: 500 !important;
+  color: var(--c-ivory) !important;
+  line-height: 1.20 !important;
+}
+
+/* Overline labels on group titles */
+h2.text-xs,
+h3.text-xs,
+[class*="group"] > h2,
+[class*="group"] > h3 {
+  font-family: var(--font-sans) !important;
+  font-weight: 500 !important;
+  color: var(--c-stone) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  font-size: 0.72rem !important;
+}
+
+/* Body / UI text */
+p, span, div, li {
+  font-family: var(--font-sans) !important;
+}
+
+/* Text colour overrides */
+.text-slate-100, .dark\:text-slate-100,
+.text-slate-200, .dark\:text-slate-200,
+.text-stone-100, .dark\:text-stone-100,
+.text-stone-200, .dark\:text-stone-200 {
+  color: var(--c-ivory) !important;
+}
+
+.text-slate-300, .dark\:text-slate-300,
+.text-stone-300, .dark\:text-stone-300 {
+  color: var(--c-silver) !important;
+}
+
+.text-slate-400, .dark\:text-slate-400,
+.text-slate-500, .dark\:text-slate-500,
+.text-stone-400, .dark\:text-stone-400,
+.text-stone-500, .dark\:text-stone-500 {
+  color: var(--c-stone) !important;
+}
+
+.text-white {
+  color: var(--c-ivory) !important;
+}
+
+/* Large stat numbers in widgets */
+.text-2xl, .text-3xl {
+  color: var(--c-ivory) !important;
+  font-weight: 500 !important;
+}
+
+.text-xs {
+  color: var(--c-stone) !important;
+  letter-spacing: 0.04em;
+}
+
+.text-sm {
+  color: var(--c-silver) !important;
+}
+
+/* ============================================================
+   NAVIGATION / HEADER
+   ============================================================ */
+
+header,
+[class*="sticky"],
+nav {
+  background-color: rgba(20,20,19,0.90) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--c-border) !important;
+}
+
+/* ============================================================
+   SERVICE & WIDGET CARDS
+   ============================================================ */
+
+/* Uniform card radius */
+[class*="rounded-md"],
+[class*="rounded-lg"],
+[class*="rounded-xl"],
+.rounded-md,
+.rounded-lg,
+.rounded-xl {
+  border-radius: 12px !important;
+}
+
+/* Card backgrounds */
+.bg-slate-800,
+.dark\:bg-slate-800,
+.bg-white\/10,
+.dark\:bg-white\/10,
+.bg-black\/20,
+.dark\:bg-black\/20 {
+  background-color: var(--c-surface) !important;
+  border: 1px solid var(--c-border) !important;
+}
+
+/* Card hover — terracotta ring */
+.hover\:bg-white\/20:hover,
+.dark\:hover\:bg-white\/20:hover,
+.hover\:bg-slate-800:hover,
+.hover\:bg-stone-800:hover {
+  background-color: var(--c-surface-2) !important;
+  box-shadow: 0 0 0 1px var(--c-terra) !important;
+}
+
+/* Service name text */
+.font-semibold,
+.font-medium {
+  color: var(--c-ivory) !important;
+}
+
+/* ============================================================
+   BORDERS & DIVIDERS
+   ============================================================ */
+
+.border-slate-700,
+.dark\:border-slate-700,
+.border-slate-800,
+.dark\:border-slate-800,
+.border-white\/10,
+.dark\:border-white\/10,
+.border-stone-700,
+.dark\:border-stone-700 {
+  border-color: var(--c-border) !important;
+}
+
+hr,
+.divide-slate-700 > :not([hidden]) ~ :not([hidden]),
+.divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--c-border) !important;
+}
+
+/* ============================================================
+   ACCENT — TERRACOTTA / CORAL
+   ============================================================ */
+
+/* Links */
+a {
+  color: var(--c-silver);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--c-coral) !important;
+}
+
+/* Active / selected accent elements */
+.text-stone-500,
+[class*="text-stone-500"] {
+  color: var(--c-stone) !important;
+}
+
+/* Status ping dots — use terracotta instead of green */
+.bg-green-500,
+.dark\:bg-green-500,
+.bg-emerald-500,
+.bg-lime-500 {
+  background-color: var(--c-terra) !important;
+}
+
+.text-green-500,
+.dark\:text-green-500,
+.text-emerald-500 {
+  color: var(--c-coral) !important;
+}
+
+/* ============================================================
+   SEARCH BAR
+   ============================================================ */
+
+input[type="text"],
+input[type="search"],
+input[placeholder],
+[role="combobox"] {
+  background-color: var(--c-surface) !important;
+  border: 1px solid var(--c-border-2) !important;
+  border-radius: 10px !important;
+  color: var(--c-ivory) !important;
+  font-family: var(--font-sans) !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+input:focus {
+  border-color: var(--c-terra) !important;
+  box-shadow: 0 0 0 3px var(--c-ring) !important;
+  outline: none !important;
+}
+
+input::placeholder {
+  color: var(--c-stone) !important;
+}
+
+/* ============================================================
+   PROGRESS BARS
+   ============================================================ */
+
+/* Track (background) */
+.bg-slate-200,
+.dark\:bg-slate-700,
+.bg-stone-200,
+.dark\:bg-stone-700,
+[class*="progress"] > [class*="bg-slate"],
+[class*="progress"] > [class*="bg-stone"] {
+  background-color: var(--c-charcoal) !important;
+  border-radius: 999px !important;
+}
+
+/* Fill (foreground) */
+[class*="bg-stone-500"],
+[class*="bg-slate-500"],
+[role="progressbar"] > div {
+  background-color: var(--c-terra) !important;
+  border-radius: 999px !important;
+}
+
+/* ============================================================
+   FOCUS RINGS
+   ============================================================ */
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--c-terra) !important;
+  border-radius: 8px;
+}
+
+/* ============================================================
+   ICONS & IMAGES
+   ============================================================ */
+
+[class*="service"] img,
+[class*="widget"] img {
+  border-radius: 6px !important;
+  opacity: 0.88;
+  transition: opacity 0.15s ease;
+}
+
+[class*="service"]:hover img,
+[class*="widget"]:hover img {
+  opacity: 1 !important;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer,
+[class*="footer"] {
+  background-color: var(--c-black) !important;
+  border-top: 1px solid var(--c-border) !important;
+  color: var(--c-stone) !important;
+}
+
+/* ============================================================
+   SCROLLBAR — Warm & minimal
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--c-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-border-2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-stone);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-border-2) var(--c-black);
+}
