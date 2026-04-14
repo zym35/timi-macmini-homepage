@@ -1,1 +1,6 @@
 ---
+- Trading:
+    - Freqtrade:
+        href: http://localhost:8080/dashboard
+        description: Freqtrade Trading Bot UI
+        icon: https://raw.githubusercontent.com/freqtrade/freqtrade/develop/docs/assets/freqtrade_poweredby.svg
